@@ -37,11 +37,11 @@
     </Preference>
 
     <!-- Anonymous statistics - (CMStats) -->
-    <PreferenceScreen
+    <!-- <PreferenceScreen
         android:key="cmstats"
         android:title="@string/anonymous_statistics_title"
         android:summary="@string/anonymous_statistics_summary"
         android:fragment="org.cyanogenmod.cmparts.cmstats.AnonymousStats" >
-    </PreferenceScreen>
+    </PreferenceScreen> -->
 
 </PreferenceScreen>

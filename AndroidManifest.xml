@@ -89,7 +89,7 @@
             android:label="@string/privacy_settings_title"
             android:targetActivity="PartsActivity">
             <intent-filter android:priority="1">
-                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+                <!-- <action android:name="com.android.settings.action.EXTRA_SETTINGS" /> -->
                 <action android:name="org.cyanogenmod.cmparts.PRIVACY_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -113,7 +113,7 @@
             android:label="@string/button_pref_title"
             android:targetActivity="PartsActivity">
             <intent-filter android:priority="1">
-                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+                <!-- <action android:name="com.android.settings.action.EXTRA_SETTINGS" /> -->
                 <action android:name="org.cyanogenmod.cmparts.BUTTON_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -137,7 +137,7 @@
             android:label="@string/profiles_settings_title"
             android:targetActivity="PartsActivity">
             <intent-filter android:priority="1">
-                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+                <!-- <action android:name="com.android.settings.action.EXTRA_SETTINGS" /> -->
                 <action android:name="org.cyanogenmod.cmparts.PROFILES_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -161,7 +161,7 @@
             android:label="@string/status_bar_title"
             android:targetActivity="PartsActivity">
             <intent-filter android:priority="1">
-                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+                <!-- <action android:name="com.android.settings.action.EXTRA_SETTINGS" /> -->
                 <action android:name="org.cyanogenmod.cmparts.STATUS_BAR_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
