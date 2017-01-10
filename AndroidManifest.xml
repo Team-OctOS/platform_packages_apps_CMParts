@@ -216,5 +216,16 @@
             </intent-filter>
         </activity-alias>
 
+        <!-- Power menu -->
+        <activity-alias
+            android:name=".input.PowerMenuActions"
+            android:label="@string/power_menu_title"
+            android:targetActivity="PartsActivity">
+            <intent-filter android:priority="1">
+                <action android:name="org.cyanogenmod.cmparts.POWER_MENU" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity-alias>
+
     </application>
 </manifest>
