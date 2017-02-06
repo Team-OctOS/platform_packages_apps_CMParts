@@ -42,6 +42,7 @@ import org.cyanogenmod.cmparts.R;
 import org.cyanogenmod.cmparts.SettingsPreferenceFragment;
 import org.cyanogenmod.cmparts.utils.DeviceUtils;
 import org.cyanogenmod.cmparts.utils.TelephonyUtils;
+import org.cyanogenmod.internal.util.QSUtils;
 import org.cyanogenmod.internal.util.ScreenType;
 
 import java.util.List;
@@ -70,6 +71,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_HOME_ANSWER_CALL = "home_answer_call";
     private static final String KEY_VOLUME_MUSIC_CONTROLS = "volbtn_music_controls";
     private static final String KEY_VOLUME_CONTROL_RING_STREAM = "volume_keys_control_ring_stream";
+    private static final String KEY_TORCH_LONG_PRESS_POWER_GESTURE =
+            "torch_long_press_power_gesture";
 
     private static final String CATEGORY_POWER = "power_key";
     private static final String CATEGORY_HOME = "home_key";
@@ -136,6 +139,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mDisableNavigationKeys;
     private SwitchPreference mPowerEndCall;
     private SwitchPreference mHomeAnswerCall;
+    private SwitchPreference mTorchLongPressPowerGesture;
 
     private Handler mHandler;
 
@@ -192,6 +196,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         // Power button ends calls.
         mPowerEndCall = (SwitchPreference) findPreference(KEY_POWER_END_CALL);
 
+        // Long press power while display is off to activate torchlight
+        mTorchLongPressPowerGesture =
+                (SwitchPreference) findPreference(KEY_TORCH_LONG_PRESS_POWER_GESTURE);
+
         // Home button answers calls.
         mHomeAnswerCall = (SwitchPreference) findPreference(KEY_HOME_ANSWER_CALL);
 
@@ -227,6 +235,9 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             if (!TelephonyUtils.isVoiceCapable(getActivity())) {
                 powerCategory.removePreference(mPowerEndCall);
                 mPowerEndCall = null;
+            }
+            if (!QSUtils.deviceSupportsFlashLight(getActivity())) {
+                powerCategory.removePreference(mTorchLongPressPowerGesture);
             }
         } else {
             prefScreen.removePreference(powerCategory);
