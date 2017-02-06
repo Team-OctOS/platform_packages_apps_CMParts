@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Copyright (C) 2017 Team-OctOs
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	http://www.apache.org/licenses/LICENSE-2.0
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Advanced restart options -->
+    <string name="advanced_reboot_title">Riavvio avanzato</string>
+    <string name="advanced_reboot_summary">Quando sbloccato, include le opzioni nel menù di alimentazione per riavviare in recovery, bootloader o l\'esecuzione di un riavvio veloce</string>
+
+    <!--Status bar date -->
+    <string name="status_bar_clock_category">Orologio</string>
+    <string name="status_bar_date_title">Data</string>
+    <string name="status_bar_date_none">Nascosta (predefinito)</string>
+    <string name="status_bar_date_small">Piccola</string>
+    <string name="status_bar_date_normal">Normale</string>
+    <string name="status_bar_date_format_title">Formato data</string>
+    <string name="status_bar_date_style">Stile data</string>
+    <string name="status_bar_date_style_normal">Normale</string>
+    <string name="status_bar_date_style_lowercase">Minuscolo</string>
+    <string name="status_bar_date_style_uppercase">Maiuscolo</string>
+    <string name="status_bar_date_format_custom">Formato Java personalizzato</string>
+    <string name="status_bar_date_string_edittext_title">Deve essere in formato data es. MM/dd/yy</string>
+    <string name="status_bar_date_string_edittext_summary">Inserisci stringa</string>
+
+    <!-- Date position -->
+    <string name="clock_date_position">Posizione della data</string>
+    <string name="clock_date_right">A destra dell\'ora</string>
+    <string name="clock_date_left">A sinistra dell\'ora</string>
+
+    <string name="menu_save">Salva</string>
+    <string name="menu_cancel">Annulla</string>
+</resources>
