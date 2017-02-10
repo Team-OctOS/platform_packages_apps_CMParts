@@ -36,8 +36,8 @@
   <string name="yes">Да</string>
   <string name="no">Не</string>
   <string name="search">Търсене</string>
-  <string name="disabled">Изключена</string>
-  <string name="enabled">Разрешено</string>
+  <string name="disabled">Деактивирано</string>
+  <string name="enabled">Активирано</string>
   <!-- Privacy Settings Header item -->
   <string name="privacy_settings_title">Поверителност</string>
   <!-- Privacy Guard -->
@@ -232,6 +232,8 @@
   <string name="camera_double_tap_power_gesture_title">Натиснете двукратно бутона за захранване за камера</string>
   <!-- Description of setting that controls gesture to open camera by double tapping the power button [CHAR LIMIT=NONE] -->
   <string name="camera_double_tap_power_gesture_desc">Бързо стартиране на камера без отключване на екрана</string>
+  <string name="torch_long_press_power_gesture_title">Активиране на фенерче</string>
+  <string name="torch_long_press_power_gesture_desc">Активиране на фенерчето чрез зъдържане бутона за захранване, когато дисплеят е изключен</string>
   <!-- Profiles -->
   <string name="profile_menu_delete_title">Изтриване</string>
   <string name="profile_action_none">Остави непроменен</string>
@@ -304,7 +306,7 @@
   <string name="profile_networkmode_2g3g4g">2G/3G/LTE</string>
   <!-- Profile Config screen PreferenceGroup titles -->
   <string name="profile_volumeoverrides_title">Сила на звука</string>
-  <string name="connection_state_enabled">Разрешено</string>
+  <string name="connection_state_enabled">Разрешени</string>
   <string name="volume_override_summary">Задаване на %1$s/%2$s</string>
   <string name="profile_volume_override_checkbox_label">Отмяна силата на звука</string>
   <!-- Menu item for managing profiles -->
