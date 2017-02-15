@@ -34,6 +34,8 @@ import android.widget.EditText;
 import java.util.Date;
 
 import cyanogenmod.preference.CMSystemSettingListPreference;
+import cyanogenmod.preference.CMSystemSettingSwitchPreference;
+import cyanogenmod.providers.CMSettings;
 
 import org.cyanogenmod.cmparts.R;
 import org.cyanogenmod.cmparts.SettingsPreferenceFragment;
@@ -49,10 +51,12 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_DATE_FORMAT = "status_bar_date_format";
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
+    private static final String STATUS_BAR_BATTERY_STYLE_TILE = "status_bar_battery_style_tile";
     private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
     private static final String STATUS_BAR_CLOCK_FONT_STYLE = "font_style";
     private static final String STATUS_BAR_CLOCK_FONT_SIZE  = "status_bar_clock_font_size";
 
+    private static final int STATUS_BAR_BATTERY_STYLE_PORTRAIT = 0;
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
 
@@ -69,6 +73,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private CMSystemSettingListPreference mStatusBarDateFormat;
     private CMSystemSettingListPreference mStatusBarBattery;
     private CMSystemSettingListPreference mStatusBarBatteryShowPercent;
+    private CMSystemSettingSwitchPreference mQsBatteryTitle;
     private CMSystemSettingListPreference mFontStyle;
     private CMSystemSettingListPreference mStatusBarClockFontSize;
 
@@ -95,6 +100,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             mStatusBarAmPm.setEnabled(false);
             mStatusBarAmPm.setSummary(R.string.status_bar_am_pm_info);
         }
+
+        mQsBatteryTitle = (CMSystemSettingSwitchPreference) findPreference(STATUS_BAR_BATTERY_STYLE_TILE);
+        mQsBatteryTitle.setChecked((CMSettings.System.getInt(resolver,
+                CMSettings.System.STATUS_BAR_BATTERY_STYLE_TILE, 1) == 1));
+        mQsBatteryTitle.setOnPreferenceChangeListener(this);
 
         mStatusBarBattery =
                 (CMSystemSettingListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
@@ -254,6 +264,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         } else if (preference == mStatusBarClock) {
             setStatusBarDateDependencies();
             return true;
+        } else if  (preference == mQsBatteryTitle) {
+            boolean checked = ((CMSystemSettingSwitchPreference)preference).isChecked();
+            CMSettings.System.putInt(getActivity().getContentResolver(),
+                    CMSettings.System.STATUS_BAR_BATTERY_STYLE_TILE, checked ? 1:0);
+            return true;
         } else {
             int value = Integer.parseInt((String) newValue);
             if (preference == mQuickPulldown) {
@@ -266,9 +281,16 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     }
 
     private void enableStatusBarBatteryDependents(int batteryIconStyle) {
-        mStatusBarBatteryShowPercent.setEnabled(
-                batteryIconStyle != STATUS_BAR_BATTERY_STYLE_HIDDEN
-                && batteryIconStyle != STATUS_BAR_BATTERY_STYLE_TEXT);
+        if (batteryIconStyle == STATUS_BAR_BATTERY_STYLE_HIDDEN ||
+                batteryIconStyle == STATUS_BAR_BATTERY_STYLE_TEXT) {
+            mStatusBarBatteryShowPercent.setEnabled(false);
+            mQsBatteryTitle.setEnabled(false);
+        } else if (batteryIconStyle == STATUS_BAR_BATTERY_STYLE_PORTRAIT) {
+            mQsBatteryTitle.setEnabled(false);
+        } else {
+            mStatusBarBatteryShowPercent.setEnabled(true);
+            mQsBatteryTitle.setEnabled(true);
+        }
     }
 
     private void setStatusBarDateDependencies() {
