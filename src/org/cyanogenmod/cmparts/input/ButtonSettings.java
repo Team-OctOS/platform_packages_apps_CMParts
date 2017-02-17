@@ -248,6 +248,18 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 mHomeAnswerCall = null;
             }
 
+            Action defaultHomeLongPressAction = Action.fromIntSafe(res.getInteger(
+                    com.android.internal.R.integer.config_longPressOnHomeBehavior));
+            Action homeLongPressAction = Action.fromSettings(resolver,
+                    CMSettings.System.KEY_HOME_LONG_PRESS_ACTION, defaultHomeLongPressAction);
+            mHomeLongPressAction = initActionList(KEY_HOME_LONG_PRESS, homeLongPressAction);
+
+            Action defaultHomeDoubleTapAction = Action.fromIntSafe(res.getInteger(
+                    com.android.internal.R.integer.config_doubleTapOnHomeBehavior));
+            Action homeDoubleTapAction = Action.fromSettings(resolver,
+                    CMSettings.System.KEY_HOME_DOUBLE_TAP_ACTION, defaultHomeDoubleTapAction);
+            mHomeDoubleTapAction = initActionList(KEY_HOME_DOUBLE_TAP, homeDoubleTapAction);
+
             hasAnyBindableKey = true;
         } else {
             prefScreen.removePreference(homeCategory);
