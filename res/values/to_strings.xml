@@ -35,6 +35,10 @@
     <string name="status_bar_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
     <string name="status_bar_date_string_edittext_summary">Enter string</string>
 
+    <!-- Custom battery tile -->
+    <string name="status_bar_battery_style_tile_title">Custom battery tile style</string>
+    <string name="status_bar_battery_style_tile_summary">Allow to set the same icon style chosen for the statusbar battery</string>
+
     <!-- Date position -->
     <string name="clock_date_position">Date position</string>
     <string name="clock_date_right">Right of time</string>
