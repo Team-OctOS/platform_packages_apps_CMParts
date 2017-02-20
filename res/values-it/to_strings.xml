@@ -32,6 +32,10 @@
     <string name="status_bar_date_string_edittext_title">Deve essere in formato data es. MM/dd/yy</string>
     <string name="status_bar_date_string_edittext_summary">Inserisci stringa</string>
 
+    <!-- Custom battery tile -->
+    <string name="status_bar_battery_style_tile_title">Stile tile batteria personalizzato</string>
+    <string name="status_bar_battery_style_tile_summary">Permette di impostare lo stesso stile di icona della batteria scelta per la barra di stato</string>
+  
     <!-- Date position -->
     <string name="clock_date_position">Posizione della data</string>
     <string name="clock_date_right">A destra dell\'ora</string>
@@ -39,4 +43,8 @@
 
     <string name="menu_save">Salva</string>
     <string name="menu_cancel">Annulla</string>
+  
+    <string name="hw_keys_title">Tasti fisici</string>
+    <string name="hw_keys_summary">Abilita i tasti fisici</string>
+  
 </resources>
