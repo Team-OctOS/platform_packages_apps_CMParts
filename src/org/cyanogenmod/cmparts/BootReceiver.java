@@ -20,8 +20,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.provider.Settings;
 import android.support.v7.preference.PreferenceManager;
+import cyanogenmod.hardware.CMHardwareManager;
 
+import android.util.Log;
 import org.cyanogenmod.cmparts.contributors.ContributorsCloudFragment;
 import org.cyanogenmod.cmparts.gestures.TouchscreenGestureSettings;
 import org.cyanogenmod.cmparts.input.ButtonSettings;
@@ -37,6 +40,18 @@ public class BootReceiver extends BroadcastReceiver {
             /* Restore the hardware tunable values */
             ButtonSettings.restoreKeyDisabler(ctx);
             setRestoredTunable(ctx);
+        }
+
+        CMHardwareManager hardware = CMHardwareManager.getInstance(ctx);
+        Log.d(TAG, "hardware.isSupported? " + hardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE));
+        if (hardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE)) {
+           boolean enabled = Settings.Secure.getInt(ctx.getContentResolver(),
+                   Settings.Secure.ENABLE_HW_KEYS, 1) == 1;
+           Log.d(TAG, "h/w keys enabled? "+enabled);
+           if (!enabled) {
+               Log.d(TAG, "Disabling hardware keys on boot.");
+               hardware.set(CMHardwareManager.FEATURE_KEY_DISABLE, !enabled);
+           }
         }
 
         TouchscreenGestureSettings.restoreTouchscreenGestureStates(ctx);
