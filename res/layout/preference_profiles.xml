@@ -86,6 +86,6 @@
         android:focusable="true"
         android:paddingEnd="12dp"
         android:paddingStart="12dip"
-        android:src="@drawable/ic_sysbar_quicksettings" />
+        android:src="@drawable/ic_gear" />
 
 </LinearLayout>
