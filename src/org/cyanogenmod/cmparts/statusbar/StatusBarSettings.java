@@ -82,7 +82,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.status_bar_settings);
 
-        ContentResolver resolver = getActivity().getContentResolver();		
+        ContentResolver resolver = getActivity().getContentResolver();
 
         mStatusBarClock = (CMSystemSettingListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
         mStatusBarClock.setOnPreferenceChangeListener(this);
@@ -115,7 +115,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
                 (CMSystemSettingListPreference) findPreference(STATUS_BAR_QUICK_QS_PULLDOWN);
         mQuickPulldown.setOnPreferenceChangeListener(this);
         updateQuickPulldownSummary(mQuickPulldown.getIntValue(0));
-		
+
         int showDate = Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_DATE, 0);
         mStatusBarDate.setValue(String.valueOf(showDate));
@@ -262,6 +262,9 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             }
             return true;
         } else if (preference == mStatusBarClock) {
+            int val = Integer.parseInt((String) newValue);
+            CMSettings.System.putInt(getActivity().getContentResolver(),
+                    CMSettings.System.STATUS_BAR_CLOCK, val);
             setStatusBarDateDependencies();
             return true;
         } else if  (preference == mQsBatteryTitle) {
